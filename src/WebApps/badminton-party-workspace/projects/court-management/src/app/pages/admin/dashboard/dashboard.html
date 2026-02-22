@@ -1,0 +1,44 @@
+<div class="dashboard">
+    <h1>Admin Dashboard</h1>
+    <div class="stats-grid">
+        <mat-card class="stat-card">
+            <div class="stat-icon income"><mat-icon>payments</mat-icon></div>
+            <div class="stat-data">
+                <div class="label">Total Revenue</div>
+                <div class="value">$12,450</div>
+                <div class="change positive">+8.2% from last month</div>
+            </div>
+        </mat-card>
+        <mat-card class="stat-card">
+            <div class="stat-icon members"><mat-icon>people</mat-icon></div>
+            <div class="stat-data">
+                <div class="label">Active Members</div>
+                <div class="value">1,280</div>
+                <div class="change positive">+4.5% from last month</div>
+            </div>
+        </mat-card>
+        <mat-card class="stat-card">
+            <div class="stat-icon bookings"><mat-icon>event_available</mat-icon></div>
+            <div class="stat-data">
+                <div class="label">Total Bookings</div>
+                <div class="value">458</div>
+                <div class="change negative">-1.2% from last month</div>
+            </div>
+        </mat-card>
+    </div>
+
+    <mat-card class="recent-activity">
+        <mat-card-header>
+            <mat-card-title>Recent Bookings</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="activity-item" *ngFor="let i of [1,2,3,4,5]">
+                <div class="user-avatar">U</div>
+                <div class="activity-info">
+                    <div class="title">Court #{{i}} booked by John Doe</div>
+                    <div class="time">2 hours ago</div>
+                </div>
+            </div>
+        </mat-card-content>
+    </mat-card>
+</div>

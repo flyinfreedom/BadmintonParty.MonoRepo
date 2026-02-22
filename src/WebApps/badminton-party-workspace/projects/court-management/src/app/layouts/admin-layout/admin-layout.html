@@ -1,0 +1,56 @@
+<mat-sidenav-container class="admin-container">
+    <mat-sidenav #sidenav mode="side" [opened]="isSidenavOpen" class="admin-sidenav">
+        <div class="sidenav-header">
+            <mat-icon color="primary">sports_tennis</mat-icon>
+            <span *ngIf="isSidenavOpen">Court Admin</span>
+        </div>
+
+        <mat-nav-list>
+            <a mat-list-item *ngFor="let item of menuItems" [routerLink]="item.route" routerLinkActive="active-link">
+                <mat-icon matListItemIcon>{{item.icon}}</mat-icon>
+                <div matListItemTitle *ngIf="isSidenavOpen">{{item.label}}</div>
+            </a>
+        </mat-nav-list>
+
+        <div class="sidenav-footer">
+            <button mat-button class="logout-btn">
+                <mat-icon>logout</mat-icon>
+                <span *ngIf="isSidenavOpen">Logout</span>
+            </button>
+        </div>
+    </mat-sidenav>
+
+    <mat-sidenav-content class="admin-content">
+        <mat-toolbar color="primary" class="admin-toolbar">
+            <button mat-icon-button (click)="toggleSidenav()">
+                <mat-icon>{{isSidenavOpen ? 'menu_open' : 'menu'}}</mat-icon>
+            </button>
+            <span class="spacer"></span>
+
+            <button mat-icon-button>
+                <mat-icon>notifications</mat-icon>
+            </button>
+
+            <button mat-button [matMenuTriggerFor]="profileMenu" class="profile-btn">
+                <div class="avatar">A</div>
+                <span>Admin User</span>
+                <mat-icon>expand_more</mat-icon>
+            </button>
+
+            <mat-menu #profileMenu="matMenu">
+                <button mat-menu-item>
+                    <mat-icon>person</mat-icon>
+                    <span>My Profile</span>
+                </button>
+                <button mat-menu-item routerLink="/login">
+                    <mat-icon>logout</mat-icon>
+                    <span>Logout</span>
+                </button>
+            </mat-menu>
+        </mat-toolbar>
+
+        <main class="page-container">
+            <router-outlet></router-outlet>
+        </main>
+    </mat-sidenav-content>
+</mat-sidenav-container>

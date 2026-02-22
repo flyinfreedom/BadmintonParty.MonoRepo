@@ -1,0 +1,124 @@
+.dashboard {
+  h1 {
+    margin-bottom: 32px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.stat-card {
+  padding: 24px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  border-radius: 16px;
+
+  .stat-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    mat-icon {
+      font-size: 32px;
+      width: 32px;
+      height: 32px;
+    }
+
+    &.income {
+      background: #e8f5e9;
+      color: #4caf50;
+    }
+
+    &.members {
+      background: #e3f2fd;
+      color: #2196f3;
+    }
+
+    &.bookings {
+      background: #fff3e0;
+      color: #ff9800;
+    }
+  }
+
+  .stat-data {
+    .label {
+      color: #666;
+      font-size: 0.9rem;
+      margin-bottom: 4px;
+    }
+
+    .value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .change {
+      font-size: 0.85rem;
+      font-weight: 500;
+
+      &.positive {
+        color: #4caf50;
+      }
+
+      &.negative {
+        color: #f44336;
+      }
+    }
+  }
+}
+
+.recent-activity {
+  border-radius: 16px;
+  padding: 16px;
+
+  mat-card-title {
+    margin-bottom: 24px;
+    font-weight: 600;
+  }
+
+  .activity-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 0;
+    border-bottom: 1px solid #eee;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    .user-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #eee;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .activity-info {
+      .title {
+        font-weight: 500;
+        font-size: 1rem;
+      }
+
+      .time {
+        font-size: 0.85rem;
+        color: #888;
+      }
+    }
+  }
+}

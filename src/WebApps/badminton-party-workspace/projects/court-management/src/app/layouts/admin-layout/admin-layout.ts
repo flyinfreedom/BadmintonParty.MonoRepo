@@ -29,6 +29,8 @@ export class AdminLayoutComponent {
 
     menuItems = [
         { icon: 'dashboard', label: 'Dashboard', route: '/admin/dashboard' },
+        { icon: 'business', label: '羽球館管理', route: '/admin/centers' },
+        { icon: 'stadium', label: '羽球場管理', route: '/admin/courts' },
         { icon: 'calendar_today', label: 'Court Booking', route: '/admin/bookings' },
         { icon: 'people', label: 'Members', route: '/admin/members' },
         { icon: 'payments', label: 'Payments', route: '/admin/payments' },

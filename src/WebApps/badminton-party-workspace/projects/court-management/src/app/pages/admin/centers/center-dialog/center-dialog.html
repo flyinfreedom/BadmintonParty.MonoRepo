@@ -1,0 +1,46 @@
+<h2 mat-dialog-title>{{ isEdit ? '編輯羽球館' : '新增羽球館' }}</h2>
+
+<mat-dialog-content class="mat-typography">
+    <form [formGroup]="form" class="center-form">
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>球館名稱</mat-label>
+            <input matInput formControlName="name" placeholder="輸入球館名稱">
+            <mat-error *ngIf="form.get('name')?.hasError('required')">球館名稱是必填的</mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>詳細描述</mat-label>
+            <textarea matInput formControlName="description" placeholder="輸入球館描述" rows="3"></textarea>
+        </mat-form-field>
+
+        <div class="form-row">
+            <mat-form-field appearance="outline">
+                <mat-label>負責人</mat-label>
+                <input matInput formControlName="owner" placeholder="輸入負責人姓名">
+            </mat-form-field>
+
+            <mat-form-field appearance="outline">
+                <mat-label>電話</mat-label>
+                <input matInput formControlName="phone" placeholder="輸入聯絡電話">
+            </mat-form-field>
+        </div>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>地址</mat-label>
+            <input matInput formControlName="address" placeholder="輸入球館地址">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="full-width">
+            <mat-label>LINE 官方帳號</mat-label>
+            <input matInput formControlName="lineAccount" placeholder="例如: @badminton_id">
+            <mat-icon matPrefix>link</mat-icon>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">取消</button>
+    <button mat-flat-button color="primary" (click)="onSave()" [disabled]="form.invalid">
+        {{ isEdit ? '儲存變更' : '立即新增' }}
+    </button>
+</mat-dialog-actions>

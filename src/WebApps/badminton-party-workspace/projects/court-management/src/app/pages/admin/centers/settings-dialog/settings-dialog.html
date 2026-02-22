@@ -1,0 +1,71 @@
+<h2 mat-dialog-title>球館詳細設定 - {{ data.center.name }}</h2>
+
+<mat-dialog-content>
+    <mat-tab-group>
+        <!-- 基本租借設定 -->
+        <mat-tab label="租借規則">
+            <div class="tab-content">
+                <div class="form-section">
+                    <h3>開放租借天數</h3>
+                    <p class="section-hint">不設定表示任何日期皆可租借。若設定 N，則表示開放 D+N 天內預約。</p>
+                    <mat-form-field appearance="outline" class="small-field">
+                        <mat-label>開放天數 (N)</mat-label>
+                        <input matInput type="number" [formControl]="$any(form.get('bookingRangeDays'))"
+                            placeholder="例如: 7">
+                        <span matSuffix>天</span>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-section">
+                    <h3>不對外開放時段 (整點)</h3>
+                    <p class="section-hint">勾選代表該時段「不提供」租借。未勾選預設為 24 小時開放。</p>
+                    <div class="hour-grid">
+                        <button *ngFor="let h of hours" type="button" mat-stroked-button
+                            [class.selected]="isUnavailable(h)" (click)="toggleUnavailable(h)">
+                            {{h}}:00
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </mat-tab>
+
+        <!-- 尖峰與費用設定 -->
+        <mat-tab label="尖峰與費用">
+            <div class="tab-content">
+                <div class="form-row">
+                    <mat-form-field appearance="outline">
+                        <mat-label>一般費用 (每小時)</mat-label>
+                        <input matInput type="number" [formControl]="$any(form.get('normalFee'))" placeholder="0">
+                        <span matPrefix>$&nbsp;</span>
+                    </mat-form-field>
+                    <mat-form-field appearance="outline">
+                        <mat-label>尖峰費用 (每小時)</mat-label>
+                        <input matInput type="number" [formControl]="$any(form.get('peakFee'))" placeholder="0">
+                        <span matPrefix>$&nbsp;</span>
+                    </mat-form-field>
+                </div>
+
+                <div class="form-section">
+                    <h3>尖峰時段設定 (依星期)</h3>
+                    <p class="section-hint">請選擇各星期中屬於「尖峰計費」的時段。預設週六、週日為全天尖峰。</p>
+
+                    <mat-tab-group class="day-tabs">
+                        <mat-tab *ngFor="let day of days" [label]="day.label">
+                            <div class="hour-grid mini">
+                                <button *ngFor="let h of hours" type="button" mat-stroked-button
+                                    [class.peak-selected]="isPeak(day.value, h)" (click)="togglePeak(day.value, h)">
+                                    {{h}}
+                                </button>
+                            </div>
+                        </mat-tab>
+                    </mat-tab-group>
+                </div>
+            </div>
+        </mat-tab>
+    </mat-tab-group>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+    <button mat-button (click)="onCancel()">取消</button>
+    <button mat-flat-button color="primary" (click)="onSave()">儲存設定</button>
+</mat-dialog-actions>

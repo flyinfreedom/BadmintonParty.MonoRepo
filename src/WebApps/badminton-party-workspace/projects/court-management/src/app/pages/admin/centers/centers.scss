@@ -1,0 +1,80 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 4px 0 0;
+    color: #666;
+  }
+}
+
+.table-card {
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0;
+
+  .full-width-table {
+    width: 100%;
+  }
+}
+
+.name-cell {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+
+  .main-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #1a1a1a;
+  }
+
+  .sub-desc {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 2px;
+  }
+}
+
+.phone-cell {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    
+    .line-badge {
+        background: #06c755;
+        color: white;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-size: 0.7rem;
+        font-weight: 700;
+    }
+}
+
+.address-cell {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+tr.mat-mdc-header-row {
+  background-color: #fcfcfc;
+}
+
+td.mat-mdc-cell {
+  padding: 8px 16px;
+}

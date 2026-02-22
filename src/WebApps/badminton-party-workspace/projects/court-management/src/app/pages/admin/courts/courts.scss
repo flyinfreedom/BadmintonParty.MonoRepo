@@ -1,0 +1,91 @@
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 4px 0 0;
+    color: #666;
+  }
+}
+
+.filter-card {
+  margin-bottom: 16px;
+  padding: 16px;
+  border-radius: 12px;
+
+  mat-form-field {
+    width: 300px;
+    margin-bottom: -1.25em; // Adjust for outline style in card
+  }
+}
+
+.table-card {
+  border-radius: 16px;
+  overflow: hidden;
+  padding: 0;
+
+  .full-width-table {
+    width: 100%;
+  }
+}
+
+.name-cell {
+  display: flex;
+  flex-direction: column;
+  padding: 12px 0;
+
+  .main-name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: #1a1a1a;
+  }
+
+  .sub-desc {
+    font-size: 0.85rem;
+    color: #888;
+  }
+}
+
+.fee-cell {
+    font-weight: 500;
+    .normal-fee { color: #2196f3; }
+    .peak-fee { color: #f44336; }
+}
+
+.period-text {
+    font-size: 0.9rem;
+    color: #555;
+    font-weight: 400;
+}
+
+.status-badge {
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+
+    &.available { background: #e8f5e9; color: #4caf50; }
+    &.maintenance { background: #fff3e0; color: #ff9800; }
+    &.closed { background: #ffebee; color: #f44336; }
+}
+
+.action-buttons {
+    display: flex;
+    gap: 4px;
+}
+
+tr.mat-mdc-header-row {
+  background-color: #fcfcfc;
+}
+
+td.mat-mdc-cell {
+  padding: 8px 16px;
+}

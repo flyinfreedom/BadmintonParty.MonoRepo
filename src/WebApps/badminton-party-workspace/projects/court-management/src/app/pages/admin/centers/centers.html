@@ -1,0 +1,78 @@
+<div class="page-header">
+    <div class="header-content">
+        <h1>羽球館管理</h1>
+        <p>管理您的所有羽球館資訊與聯絡方式</p>
+    </div>
+    <button mat-flat-button color="primary" (click)="addCenter()">
+        <mat-icon>add</mat-icon>
+        新增羽球館
+    </button>
+</div>
+
+<mat-card class="table-card">
+    <table mat-table [dataSource]="centers" class="full-width-table">
+        <!-- Name Column -->
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>球館名稱</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="name-cell">
+                    <span class="main-name">{{element.name}}</span>
+                    <span class="sub-desc" *ngIf="element.description">{{element.description}}</span>
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Owner Column -->
+        <ng-container matColumnDef="owner">
+            <th mat-header-cell *matHeaderCellDef>負責人</th>
+            <td mat-cell *matCellDef="let element">{{element.owner || '-'}}</td>
+        </ng-container>
+
+        <!-- Phone Column -->
+        <ng-container matColumnDef="phone">
+            <th mat-header-cell *matHeaderCellDef>電話</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="phone-cell">
+                    {{element.phone || '-'}}
+                    <div class="line-badge" *ngIf="element.lineAccount" matTooltip="LINE: {{element.lineAccount}}">
+                        LINE
+                    </div>
+                </div>
+            </td>
+        </ng-container>
+
+        <!-- Address Column -->
+        <ng-container matColumnDef="address">
+            <th mat-header-cell *matHeaderCellDef>地址</th>
+            <td mat-cell *matCellDef="let element" class="address-cell">{{element.address || '-'}}</td>
+        </ng-container>
+
+        <!-- Settings Column -->
+        <ng-container matColumnDef="settings">
+            <th mat-header-cell *matHeaderCellDef>進階設定</th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button color="accent" (click)="openSettings(element)" matTooltip="球館詳細規則與費用設定">
+                    <mat-icon>settings</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <!-- Actions Column -->
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>操作</th>
+            <td mat-cell *matCellDef="let element">
+                <div class="action-buttons">
+                    <button mat-icon-button color="primary" (click)="editCenter(element)" matTooltip="編輯">
+                        <mat-icon>edit</mat-icon>
+                    </button>
+                    <button mat-icon-button color="warn" (click)="deleteCenter(element)" matTooltip="刪除">
+                        <mat-icon>delete</mat-icon>
+                    </button>
+                </div>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let element; columns: displayedColumns;"></tr>
+    </table>
+</mat-card>

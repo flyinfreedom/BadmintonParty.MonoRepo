@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialogModule, MatDialog } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { CourtDialogComponent } from './court-dialog/court-dialog';
 
 export interface BadmintonCourt {
@@ -36,8 +37,10 @@ export interface BadmintonCourt {
         MatFormFieldModule,
         MatChipsModule,
         MatTooltipModule,
-        MatDialogModule
+        MatDialogModule,
+        MatDividerModule
     ],
+
     templateUrl: './courts.html',
     styleUrls: ['./courts.scss']
 })

@@ -1,5 +1,6 @@
 using BadmintonParty.Domain.AggregatesModel.AuditLogAggregate;
 using BadmintonParty.Domain.AggregatesModel.CourtAggregate;
+using BadmintonParty.Domain.AggregatesModel.MemberAggregate;
 using BadmintonParty.Infrastructure.Data;
 using BadmintonParty.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -19,6 +20,7 @@ public static class DependencyInjection
 
         services.AddScoped<ICourtRepository, CourtRepository>();
         services.AddScoped<IAuditLogRepository, AuditLogRepository>();
+        services.AddScoped<IMemberRepository, MemberRepository>();
 
         return services;
     }

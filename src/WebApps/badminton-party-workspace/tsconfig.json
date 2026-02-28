@@ -3,6 +3,12 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "auth-shared": [
+        "projects/auth-shared/src/public-api.ts"
+      ]
+    },
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
@@ -34,6 +40,12 @@
     },
     {
       "path": "./projects/badminton-party-liff/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/auth-shared/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/auth-shared/tsconfig.spec.json"
     }
   ]
 }

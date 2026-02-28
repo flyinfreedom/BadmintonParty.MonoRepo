@@ -31,6 +31,7 @@
     "@angular/material": "~21.1.5",
     "@angular/platform-browser": "^21.1.0",
     "@angular/router": "^21.1.0",
+    "@line/liff": "^2.27.3",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -40,6 +41,7 @@
     "@angular/compiler-cli": "^21.1.0",
     "@angular/material": "^21.1.5",
     "jsdom": "^27.1.0",
+    "ng-packagr": "^21.1.0",
     "typescript": "~5.9.2",
     "vitest": "^4.0.8"
   }

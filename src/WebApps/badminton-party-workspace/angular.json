@@ -142,6 +142,32 @@
           "builder": "@angular/build:unit-test"
         }
       }
+    },
+    "auth-shared": {
+      "projectType": "library",
+      "root": "projects/auth-shared",
+      "sourceRoot": "projects/auth-shared/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/auth-shared/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/auth-shared/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:unit-test",
+          "options": {
+            "tsConfig": "projects/auth-shared/tsconfig.spec.json"
+          }
+        }
+      }
     }
   }
 }

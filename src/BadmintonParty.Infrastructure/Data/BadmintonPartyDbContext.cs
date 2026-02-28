@@ -1,5 +1,6 @@
 using BadmintonParty.Domain.AggregatesModel.AuditLogAggregate;
-using BadmintonParty.Domain.AggregatesModel.TenateAggregate;
+using BadmintonParty.Domain.AggregatesModel.CourtAggregate;
+using BadmintonParty.Domain.AggregatesModel.MemberAggregate;
 using Microsoft.EntityFrameworkCore;
 
 namespace BadmintonParty.Infrastructure.Data;
@@ -10,9 +11,9 @@ public class BadmintonPartyDbContext : DbContext
     {
     }
 
-    public DbSet<Tenate> Tenates => Set<Tenate>();
-    public DbSet<TenateAccount> TenateAccounts => Set<TenateAccount>();
-    public DbSet<TenateHall> TenateHalls => Set<TenateHall>();
+    public DbSet<Member> Members => Set<Member>();
+    public DbSet<CourtHall> CourtHalls => Set<CourtHall>();
+    public DbSet<Court> Courts => Set<Court>();
     public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

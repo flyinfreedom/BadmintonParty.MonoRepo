@@ -1,4 +1,4 @@
-namespace BadmintonParty.Domain.AggregatesModel.TenateAggregate;
+namespace BadmintonParty.Domain.AggregatesModel.CourtAggregate;
 public enum HallStatus
 {
     InActive = 0,

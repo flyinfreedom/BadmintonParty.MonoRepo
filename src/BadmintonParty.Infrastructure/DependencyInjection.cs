@@ -1,5 +1,5 @@
 using BadmintonParty.Domain.AggregatesModel.AuditLogAggregate;
-using BadmintonParty.Domain.AggregatesModel.TenateAggregate;
+using BadmintonParty.Domain.AggregatesModel.CourtAggregate;
 using BadmintonParty.Infrastructure.Data;
 using BadmintonParty.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
@@ -17,7 +17,7 @@ public static class DependencyInjection
         services.AddDbContext<BadmintonPartyDbContext>(options =>
             options.UseNpgsql(connectionString));
 
-        services.AddScoped<ITenateRepository, TenateRepository>();
+        services.AddScoped<ICourtRepository, CourtRepository>();
         services.AddScoped<IAuditLogRepository, AuditLogRepository>();
 
         return services;

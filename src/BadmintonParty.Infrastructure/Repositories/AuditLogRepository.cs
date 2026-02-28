@@ -12,7 +12,7 @@ public class AuditLogRepository : IAuditLogRepository
         _context = context;
     }
 
-    public async Task CreateAuditLogAsync(AuditLog auditLog)
+    public async Task AddAuditLogAsync(AuditLog auditLog)
     {
         _context.AuditLogs.Add(auditLog);
         await _context.SaveChangesAsync();

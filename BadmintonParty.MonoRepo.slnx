@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/BadmintonParty.Api/BadmintonParty.Api.csproj" />
+    <Project Path="src/BadmintonParty.CourtManagement.Api/BadmintonParty.CourtManagement.Api.csproj" />
+    <Project Path="src/BadmintonParty.Domain/BadmintonParty.Domain.csproj" />
+    <Project Path="src/BadmintonParty.Infrastructure/BadmintonParty.Infrastructure.csproj" />
+  </Folder>
+</Solution>

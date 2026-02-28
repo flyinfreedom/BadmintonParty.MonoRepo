@@ -1,8 +1,8 @@
-namespace BadmintonParty.Domain.AggregatesModel.TenateAggregate;
-public class TenateHall
+namespace BadmintonParty.Domain.AggregatesModel.CourtAggregate;
+public class CourtHall
 {
     public long Id { get; set; }
-    public long TenateId { get; set; }
+    public long? MemberId { get; set; }
     public string Name { get; set; } = string.Empty;
     public string? Description { get; set; }
     public string Address { get; set; } = string.Empty;
@@ -10,4 +10,8 @@ public class TenateHall
     public string LineOfficalAccount { get; set; } = string.Empty;
     public HallStatus Status { get; set; }
     public Guid PublicId { get; set; }
+    public DateTime CreatedAt { get; set; }
+    public DateTime UpdatedAt { get; set; }
+    public long CreatedBy { get; set; }
+    public long UpdatedBy { get; set; }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { MatSidenavModule } from '@angular/material/sidenav';
@@ -7,6 +7,8 @@ import { MatListModule } from '@angular/material/list';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
+import { AuthService } from 'auth-shared';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-admin-layout',
@@ -25,6 +27,9 @@ import { MatMenuModule } from '@angular/material/menu';
     styleUrls: ['./admin-layout.scss']
 })
 export class AdminLayoutComponent {
+    auth = inject(AuthService);
+    router = inject(Router);
+
     isSidenavOpen = true;
 
     menuItems = [
@@ -39,5 +44,10 @@ export class AdminLayoutComponent {
 
     toggleSidenav() {
         this.isSidenavOpen = !this.isSidenavOpen;
+    }
+
+    logout() {
+        this.auth.logout();
+        this.router.navigate(['/']);
     }
 }

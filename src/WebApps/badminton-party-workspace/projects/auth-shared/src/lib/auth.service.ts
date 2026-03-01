@@ -1,5 +1,9 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, inject, InjectionToken } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { firstValueFrom } from 'rxjs';
 import liff from '@line/liff';
+
+export const AUTH_API_URL = new InjectionToken<string>('AUTH_API_URL');
 
 export interface LiffProfile {
     userId: string;
@@ -13,13 +17,20 @@ export interface LiffProfile {
     providedIn: 'root',
 })
 export class AuthService {
+    private http = inject(HttpClient);
+    private apiUrl = inject(AUTH_API_URL, { optional: true }) || 'http://localhost:5263';
+
     private _isLoggedIn = signal<boolean>(false);
     private _profile = signal<LiffProfile | null>(null);
     private _isInitialized = signal<boolean>(false);
+    private _backendToken = signal<string | null>(null);
+    private _backendUser = signal<any | null>(null);
 
     isLoggedIn = computed(() => this._isLoggedIn());
     profile = computed(() => this._profile());
     isInitialized = computed(() => this._isInitialized());
+    backendToken = computed(() => this._backendToken());
+    backendUser = computed(() => this._backendUser());
 
     /**
      * Initialize LIFF
@@ -35,6 +46,22 @@ export class AuthService {
             this._isInitialized.set(true);
 
             if (liff.isLoggedIn()) {
+                const idToken = liff.getIDToken();
+                if (idToken) {
+                    try {
+                        const response = await firstValueFrom(
+                            this.http.post<any>(`${this.apiUrl}/api/auth/login`, { idToken })
+                        );
+                        this._backendToken.set(response.token);
+                        this._backendUser.set(response.user);
+                    } catch (e) {
+                        console.error('Backend login verification failed:', e);
+                        // Optional: logout if backend fails
+                        // liff.logout();
+                        // return false;
+                    }
+                }
+
                 this._isLoggedIn.set(true);
                 const profile = await liff.getProfile();
                 this._profile.set(profile as LiffProfile);
@@ -43,6 +70,8 @@ export class AuthService {
 
             this._isLoggedIn.set(false);
             this._profile.set(null);
+            this._backendToken.set(null);
+            this._backendUser.set(null);
             return false;
         } catch (err) {
             console.error('LIFF initialization failed', err);
@@ -74,6 +103,8 @@ export class AuthService {
             liff.logout();
             this._isLoggedIn.set(false);
             this._profile.set(null);
+            this._backendToken.set(null);
+            this._backendUser.set(null);
             // Optional: window.location.reload() to clear any state
         }
     }

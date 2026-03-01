@@ -13,7 +13,7 @@
         </mat-nav-list>
 
         <div class="sidenav-footer">
-            <button mat-button class="logout-btn">
+            <button mat-button class="logout-btn" (click)="logout()">
                 <mat-icon>logout</mat-icon>
                 <span *ngIf="isSidenavOpen">Logout</span>
             </button>
@@ -32,8 +32,11 @@
             </button>
 
             <button mat-button [matMenuTriggerFor]="profileMenu" class="profile-btn">
-                <div class="avatar">A</div>
-                <span>Admin User</span>
+                <img *ngIf="auth.backendUser()?.pictureUrl" [src]="auth.backendUser()?.pictureUrl" class="avatar-img"
+                    alt="avatar" />
+                <div *ngIf="!auth.backendUser()?.pictureUrl" class="avatar">{{ (auth.backendUser()?.name || '?')[0] |
+                    uppercase }}</div>
+                <span>{{ auth.backendUser()?.name || 'Loading...' }}</span>
                 <mat-icon>expand_more</mat-icon>
             </button>
 
@@ -42,7 +45,7 @@
                     <mat-icon>person</mat-icon>
                     <span>My Profile</span>
                 </button>
-                <button mat-menu-item routerLink="/login">
+                <button mat-menu-item (click)="logout()">
                     <mat-icon>logout</mat-icon>
                     <span>Logout</span>
                 </button>

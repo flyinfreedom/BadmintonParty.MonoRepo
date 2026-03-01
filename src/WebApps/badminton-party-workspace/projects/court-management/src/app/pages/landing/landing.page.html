@@ -6,7 +6,9 @@
   <div class="nav-links">
     <a href="#features">Features</a>
     <a href="#about">About</a>
-    <button mat-stroked-button color="primary" routerLink="/login">Login</button>
+    <button *ngIf="!auth.isLoggedIn()" mat-stroked-button color="primary" (click)="login()">Login</button>
+    <button *ngIf="auth.isLoggedIn()" mat-stroked-button color="primary" routerLink="/admin/dashboard">Go to
+      Dashboard</button>
     <button mat-flat-button color="primary">Get Started</button>
   </div>
 </nav>
@@ -14,7 +16,8 @@
 <div class="hero-section">
   <div class="hero-content">
     <h1>Manage Your Badminton Courts <br><span class="highlight">With Precision</span></h1>
-    <p>The ultimate platform for court booking, player management, and tournament organization. Streamline your badminton community today.</p>
+    <p>The ultimate platform for court booking, player management, and tournament organization. Streamline your
+      badminton community today.</p>
     <div class="cta-group">
       <button mat-flat-button color="primary" class="hero-btn">Start Free Trial</button>
       <button mat-stroked-button color="primary" class="hero-btn secondary">Watch Demo</button>
@@ -22,39 +25,39 @@
   </div>
   <div class="hero-visual">
     <div class="visual-card">
-        <div class="glass-orb one"></div>
-        <div class="glass-orb two"></div>
-        <div class="glass-orb three"></div>
-        <div class="court-preview">
-            <mat-icon>dashboard</mat-icon>
-            <div class="stat-line"></div>
-            <div class="stat-line short"></div>
-        </div>
+      <div class="glass-orb one"></div>
+      <div class="glass-orb two"></div>
+      <div class="glass-orb three"></div>
+      <div class="court-preview">
+        <mat-icon>dashboard</mat-icon>
+        <div class="stat-line"></div>
+        <div class="stat-line short"></div>
+      </div>
     </div>
   </div>
 </div>
 
 <section id="features" class="features">
-    <h2>Powerful Features</h2>
-    <div class="feature-grid">
-        <div class="feature-card">
-            <mat-icon color="primary">event_available</mat-icon>
-            <h3>Smart Booking</h3>
-            <p>Real-time court availability and instant booking system.</p>
-        </div>
-        <div class="feature-card">
-            <mat-icon color="primary">people</mat-icon>
-            <h3>Member Management</h3>
-            <p>Effortlessly manage player profiles and memberships.</p>
-        </div>
-        <div class="feature-card">
-            <mat-icon color="primary">insights</mat-icon>
-            <h3>Analytics</h3>
-            <p>Deep insights into court usage and revenue trends.</p>
-        </div>
+  <h2>Powerful Features</h2>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <mat-icon color="primary">event_available</mat-icon>
+      <h3>Smart Booking</h3>
+      <p>Real-time court availability and instant booking system.</p>
     </div>
+    <div class="feature-card">
+      <mat-icon color="primary">people</mat-icon>
+      <h3>Member Management</h3>
+      <p>Effortlessly manage player profiles and memberships.</p>
+    </div>
+    <div class="feature-card">
+      <mat-icon color="primary">insights</mat-icon>
+      <h3>Analytics</h3>
+      <p>Deep insights into court usage and revenue trends.</p>
+    </div>
+  </div>
 </section>
 
 <footer class="footer">
-    <p>&copy; 2026 Badminton Party. All rights reserved.</p>
+  <p>&copy; 2026 Badminton Party. All rights reserved.</p>
 </footer>

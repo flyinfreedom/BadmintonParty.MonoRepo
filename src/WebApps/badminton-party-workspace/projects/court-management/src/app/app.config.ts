@@ -13,6 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideAnimationsAsync(),
     provideHttpClient(withFetch()),
-    provideLineAuth({ liffId: AUTH_CONFIG.liffId, apiUrl: 'https://localhost:7058' })
+    provideLineAuth({ liffId: AUTH_CONFIG.liffId, apiUrl: 'http://localhost:5263' })
   ]
 };
